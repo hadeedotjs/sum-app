@@ -1,26 +1,34 @@
-
-
-
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculate</title>
     <script src="config.js"></script>
 </head>
+
 <body>
     <h2>Number 1</h2>
-    <input id="abc" type="number" placeholder="Enter first number">
-    
+    <input oninput="debouncing()"id="abc" type="number" placeholder="Enter first number">
+
     <h2>Number 2</h2>
-    <input id="abz" type="number" placeholder="Enter second number">
-    
-    <button onclick="calculate()">Calculate</button>
-    
+    <input oninput="debouncing()"id="abz" type="number" placeholder="Enter second number">
+
+    <!-- <button onclick="calculate()">Calculate</button> -->
+
     <div id="result"></div>
 
-    <script> 
+    <script>
+        let timer;
+        function debouncing() {
+            clearTimeout(timer)
+             timer = setTimeout(() => {
+                calculate()
+            }, 500)
+        }
+
         function calculate() {
             const a = document.getElementById("abc").value;
             const b = document.getElementById("abz").value;
@@ -33,8 +41,9 @@
                 .then(ans => {
                     document.getElementById("result").innerHTML = "Sum: " + ans.sum;
                 })
-               
+
         }
     </script>
 </body>
+
 </html>
