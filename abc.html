@@ -1,31 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calculate</title>
-    <script src="config.js"></script>
-</head>
-<script> 
-    function calculate(){
-        const a= document.getElementById("abc").value
-        const b= document.getElementById("abz").value
-        fetch(`${config.backendUrl}/sum?num1=${a}&num2=${b}`).then((response)=>{
-            return response.json()
-        }).then((ans)=>{
-            document.getElementById("result").innerHTML= ans.sum
-        })
-    }
-</script>
 
-<body>
-    <h2> number 1</h2><input id="abc" type ="number" >
-    <h2> number 2</h2><input id = "abz" type ="number" >
-    <button onclick="calculate()"><h1>calculate</h1></button>
-    <div id="result"></div>
-</body>
-
-</html> -->
 
 
 <!DOCTYPE html>
@@ -55,18 +28,12 @@
 
             fetch(`${config.backendUrl}/sum?num1=${a}&num2=${b}`)
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
                     return response.json();
                 })
                 .then(ans => {
                     document.getElementById("result").innerHTML = "Sum: " + ans.sum;
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById("result").innerHTML = "An error occurred.";
-                });
+               
         }
     </script>
 </body>
